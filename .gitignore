@@ -3,3 +3,12 @@
 ################################################################################
 
 /.vs/WooliesxChallenge/v16
+/.vs/WooliesxChallenge/v15/Server/sqlite3
+/WooliesxChallenge/bin
+/WooliesxChallenge/obj
+/WooliesxChallenge.Application/bin
+/WooliesxChallenge.Application/obj
+/WooliesxChallenge.Domain/bin
+/WooliesxChallenge.Domain/obj
+/WooliesxChallenge.Proxy/obj
+/.vs
