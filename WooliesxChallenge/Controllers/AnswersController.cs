@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using WooliesxChallenge.Application;
 using WooliesxChallenge.Domain;
+using WooliesxChallenge.Domain.Models;
 
 namespace WooliesxChallenge.Api.Controllers
 {

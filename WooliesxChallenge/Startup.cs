@@ -1,3 +1,4 @@
+using System;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -6,6 +7,9 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using WooliesxChallenge.Application;
 using WooliesxChallenge.Domain;
+using WooliesxChallenge.Domain.Interfaces;
+using WooliesxChallenge.Proxy;
+using WooliesxChallenge.Proxy.Resource;
 
 namespace WooliesxChallenge.Api
 {
@@ -21,8 +25,20 @@ namespace WooliesxChallenge.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            var userModel = Configuration.GetSection("UserSetting").Get<UserModel>();
-            services.AddSingleton<IUserService>(r => new UserService(userModel));
+            var devChallegeResourceUrl = Configuration.GetValue<string>("DevChallegeResourceUrl");
+           
+            services.AddSingleton<IDevChallengeResourceClient>(x =>
+                new DevChallengeResourceClient(new Uri(devChallegeResourceUrl)));
+
+            services.AddSingleton<IDevChallengeResourceProxy, DevChallengeResourceProxy>();
+            services.AddSingleton<IDevChallengeResourceProxy, DevChallengeResourceProxy>();
+            services.Configure<UserSetting>(Configuration.GetSection(UserSetting.Setting));
+            
+            services.AddSingleton<IUserService, UserService>();
+            services.AddSingleton<IProductService, ProductService>();
+
+            services.AddSingleton<ITrolleyCalculatorService, TrolleyCalculatorService>();
+
             services.AddControllers();
 
             services.AddSwaggerGen(c =>

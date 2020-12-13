@@ -1,23 +1,26 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.Xml.Schema;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using WooliesxChallenge.Domain;
+using WooliesxChallenge.Domain.Models;
 
 namespace WooliesxChallenge.Application
 {
     public class UserService : IUserService
     {
-        private readonly UserModel _user;
+        private readonly UserSetting _user;
 
-        public UserService(UserModel user)
+        public UserService(IOptions<UserSetting> userSettingOptions)
         {
-            _user = user;
+            _user = userSettingOptions.Value;
         }
         public UserModel GetUser()
         {
             if (_user == null || string.IsNullOrEmpty(_user.Name))
                 throw new Exception("User setting is not correct.");
-            return _user;
+            return new UserModel{Name = _user.Name, Token = _user.Token};
         }
     }
 }

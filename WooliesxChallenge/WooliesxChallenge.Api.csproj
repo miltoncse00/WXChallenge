@@ -22,6 +22,7 @@
   <ItemGroup>
     <ProjectReference Include="..\WooliesxChallenge.Application\WooliesxChallenge.Application.csproj" />
     <ProjectReference Include="..\WooliesxChallenge.Domain\WooliesxChallenge.Domain.csproj" />
+    <ProjectReference Include="..\WooliesxChallenge.Proxy\WooliesxChallenge.Proxy.csproj" />
   </ItemGroup>
 
 
