@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Net.Mime;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using WooliesxChallenge.Application;
-using WooliesxChallenge.Domain;
 using WooliesxChallenge.Domain.Enums;
 
 namespace WooliesxChallenge.Api.Controllers

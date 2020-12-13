@@ -1,7 +1,4 @@
 ﻿using System;
-using System.ComponentModel.DataAnnotations;
-using System.Xml.Schema;
-using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using WooliesxChallenge.Domain;
 using WooliesxChallenge.Domain.Models;

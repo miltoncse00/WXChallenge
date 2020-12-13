@@ -1,5 +1,4 @@
-﻿using System.Threading.Tasks;
-using WooliesxChallenge.Domain;
+﻿using WooliesxChallenge.Domain;
 
 namespace WooliesxChallenge.Application
 {

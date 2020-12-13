@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Text;
 using FluentAssertions;
 using WooliesxChallenge.Application;
 using WooliesxChallenge.Domain;

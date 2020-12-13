@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace WooliesxChallenge.Domain.Models
+﻿namespace WooliesxChallenge.Domain.Models
 {
     public class TrolleyProductModel
     {
