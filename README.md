@@ -1,65 +1,89 @@
 Wooliesx Challenge API coding exercise
 
-The swagger page of excerise is here https://wooliesxchallenge.azurewebsites.net/swagger/index.html
+The swagger page of excerise :
+
+ https://wooliesxchallenge.azurewebsites.net/swagger/index.html
 
 
-This is a Quick document of WooliesxChallege generated from postman. I have also attached postman json file in this repository.
-postman document link here https://documenter.getpostman.com/view/2333773/TVsoGVyS
+
+This is a Quick document of Wooliesx Challenge generated from postman. I have also attached postman json file in this repository.
+postman document link here 
+
+https://documenter.getpostman.com/view/2333773/TVsoGVyS
+
+
+Exercise 1:
 
 GET Excercise 1: User
+
 https://wooliesxchallenge.azurewebsites.net//api/Answers/User
-This is excercise 1: get the name and token of user.
+
+This is exercise 1: get the name and token of user.
 
 curl --location --request GET 'https://wooliesxchallenge.azurewebsites.net//api/Answers/User'
 
 
 
-GET Excercise 3:Product Sort - Low
+Exercise 2:
+
+GET Excercise 3:Product Sort – Low
+
 https://wooliesxchallenge.azurewebsites.net/api/Product/Sort?sortOption=Low
-This is Excercise 2 for sorting the product with Power Price.
 
-PARAMS
-sortOption Low
-curl --location --request GET 'https://wooliesxchallenge.azurewebsites.net/api/Product/Sort?sortOption=Low'
+This is Exercise 2 for sorting the product with Power Price.
 
 
-GET Excercise 2:Product Sort -High
+
+
+GET Exercise 2:Product Sort -High
+
 https://wooliesxchallenge.azurewebsites.net/api/Product/Sort?sortOption=High
-This is excercise 2: sort the product with Higher price
 
-PARAMS
-sortOption  High
+This is exercise 2: sort the product with Higher price
 
 
-GET Excercise 2: Product Sort - Ascending
+
+
+
+GET Exercise 2: Product Sort – Ascending
+
+
 https://wooliesxchallenge.azurewebsites.net/api/Product/Sort?sortOption=Ascending
-This is excercise 2: sort the product with name in ascending order
 
-PARAMS
-sortOption Ascending
+This is exercise 2: sort the product with name in ascending order
 
-GET Excercise 2:Product Sort - Descending
+
+
+
+
+GET Exercise 2:Product Sort – Descending
+
 https://wooliesxchallenge.azurewebsites.net/api/Product/Sort?sortOption=Descending
-This is excercise 2: sort the product with name in descending order
 
-PARAMS
-sortOption Descending
+This is exercise 2: sort the product with name in descending order
 
-GET Excercise 2:Product Sort - Recommeded
+
+
+GET Exercise 2:Product Sort – Recommeded
+
 https://wooliesxchallenge.azurewebsites.net/api/Product/Sort?sortOption=Recommended
-This is excercise 2: sort the product based on popularity in shopper history
 
-PARAMS
-sortOption Recommended
+This is exercise 2: sort the product based on popularity in shopper history
+
+
 
 
 
 POST TrolleyTotal
+
 https://wooliesxchallenge.azurewebsites.net/api/TrolleyCalculator/TrolleyTotal
-This is excercise 3: get the minimum price of trolley total
+
+This is exercise 3: get the minimum price of trolley total
 
 HEADERS
+
 Content-Typeapplication/json
+
 BODY raw
 
 {
