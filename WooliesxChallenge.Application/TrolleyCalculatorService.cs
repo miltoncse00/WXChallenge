@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using WooliesxChallenge.Domain;
 using WooliesxChallenge.Domain.Models;
@@ -9,7 +11,6 @@ namespace WooliesxChallenge.Application
     {
         public decimal CalculateTotal(TrolleyRequest trolleyRequest)
         {
-            decimal minTotal;
             var productPriceMap = trolleyRequest.Products.ToDictionary(r => r.Name, r => r.Price);
             var sums = new List<decimal>();
             decimal maxTotal = 0;
@@ -21,23 +22,47 @@ namespace WooliesxChallenge.Application
 
             var quantityMap = trolleyRequest.Quantities.ToDictionary(r => r.Name, r => r.Quantity);
 
+            var productNames = trolleyRequest.Products.Select(r => r.Name).ToList();
 
             foreach (var special in trolleyRequest.Specials)
             {
-                decimal specialTotal = 0;
+                if (CheckSpecialMatchesAllProducts(special, productNames))
+                    continue;
+
+                decimal totalWithoutSpecialPrice = 0;
                 var minSpecialMultiplier = GetMinSpecialMultiplier(special, quantityMap);
                 foreach (var spectialQuantity in special.Quantities)
                 {
-                    var quantityRemaining = (quantityMap[spectialQuantity.Name] - spectialQuantity.Quantity * minSpecialMultiplier);
-                    specialTotal += productPriceMap[spectialQuantity.Name] *
+                    var quantityRemaining = (GetQuantityByName(quantityMap, spectialQuantity.Name) - spectialQuantity.Quantity * minSpecialMultiplier);
+                    
+                    totalWithoutSpecialPrice += GetPriceByName(productPriceMap, spectialQuantity.Name) *
                                     (quantityRemaining > 0 ? quantityRemaining : 0);
                 }
-                sums.Add(specialTotal + special.Total* minSpecialMultiplier);
+                sums.Add(totalWithoutSpecialPrice + special.Total * minSpecialMultiplier);
             }
 
-            minTotal = sums.Min();
+            var minTotal = sums.Min();
 
             return minTotal;
+        }
+
+        private static bool CheckSpecialMatchesAllProducts(TrolleySpecialModel special, List<string> productNames)
+        {
+            return special.Quantities.Any(r => !productNames.Contains(r.Name, StringComparer.InvariantCultureIgnoreCase));
+        }
+
+        private static decimal GetPriceByName(Dictionary<string, decimal> productPriceMap, string name)
+        {
+            if (!productPriceMap.ContainsKey(name))
+                throw new ValidationException($"Can not find Product price of item {name}");
+            return productPriceMap[name];
+        }
+
+        private static int GetQuantityByName(Dictionary<string, int> quantityMap, string name)
+        {
+            if (!quantityMap.ContainsKey(name))
+                throw new ValidationException($"Can not find Quantity value of item {name}");
+            return quantityMap[name];
         }
 
         /// <summary>
@@ -49,7 +74,7 @@ namespace WooliesxChallenge.Application
         private static int GetMinSpecialMultiplier(TrolleySpecialModel special, Dictionary<string, int> quantityMap)
         {
             var minSpecialMultiplier = special.Quantities.Min(r =>
-                quantityMap[r.Name] <= r.Quantity ? 1 : quantityMap[r.Name] / r.Quantity);
+                quantityMap[r.Name] <= r.Quantity ? 1 : GetQuantityByName(quantityMap, r.Name) / r.Quantity);
             return minSpecialMultiplier;
         }
     }
