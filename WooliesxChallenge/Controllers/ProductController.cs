@@ -32,7 +32,7 @@ namespace WooliesxChallenge.Api.Controllers
             if (!canParse)
                 throw new ValidationException("Sort Option is not valid");
 
-            var products = await _productService.GetProduct(parsedSortOption);
+            var products = await _productService.GetProductAsync(parsedSortOption);
             return Ok(products);
         }
     }

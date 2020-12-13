@@ -20,15 +20,15 @@ namespace WooliesxChallenge.Application
             _devChallengeResourceProxy = devChallengeResourceProxy;
             _userSetting = userSettingOptions.Value;
         }
-        public async Task<IList<Product>> GetProduct(SortOption sortOption)
+        public async Task<IList<Product>> GetProductAsync(SortOption sortOption)
         {
             if (sortOption == SortOption.Recommended)
-                return await GetRecommendedProduct();
+                return await GetRecommendedProductAsync();
 
-            return await GetProductSorted(sortOption);
+            return await GetProductSortedAsync(sortOption);
         }
 
-        private async Task<IList<Product>> GetProductSorted(SortOption sortOption)
+        private async Task<IList<Product>> GetProductSortedAsync(SortOption sortOption)
         {
             var products = (await _devChallengeResourceProxy.GetProductAsync(_userSetting.Token)).ToList();
             if (products.Count == 0)
@@ -56,7 +56,7 @@ namespace WooliesxChallenge.Application
             return result;
         }
 
-        private async Task<IList<Product>> GetRecommendedProduct()
+        private async Task<IList<Product>> GetRecommendedProductAsync()
         {
             var shopperHistories = await _devChallengeResourceProxy.GetShopperHistoryAsync(_userSetting.Token);
             var products = shopperHistories.SelectMany(s => s.Products).GroupBy(s => s.Name).Select(r =>

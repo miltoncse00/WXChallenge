@@ -18,6 +18,10 @@ namespace WooliesxChallenge.Application
             {
                 maxTotal += quantity.Quantity * productPriceMap[quantity.Name];
             }
+
+            if (trolleyRequest.Specials == null || !trolleyRequest.Specials.Any())
+                return maxTotal;
+
             sums.Add(maxTotal);
 
             var quantityMap = trolleyRequest.Quantities.ToDictionary(r => r.Name, r => r.Quantity);
@@ -27,14 +31,14 @@ namespace WooliesxChallenge.Application
             foreach (var special in trolleyRequest.Specials)
             {
                 if (CheckSpecialMatchesAllProducts(special, productNames))
-                    continue;
+                    throw new ValidationException("Specials does not match with Products");
 
                 decimal totalWithoutSpecialPrice = 0;
                 var minSpecialMultiplier = GetMinSpecialMultiplier(special, quantityMap);
                 foreach (var spectialQuantity in special.Quantities)
                 {
                     var quantityRemaining = (GetQuantityByName(quantityMap, spectialQuantity.Name) - spectialQuantity.Quantity * minSpecialMultiplier);
-                    
+
                     totalWithoutSpecialPrice += GetPriceByName(productPriceMap, spectialQuantity.Name) *
                                     (quantityRemaining > 0 ? quantityRemaining : 0);
                 }

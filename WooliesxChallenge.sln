@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30717.126
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WooliesxChallenge.Api", "WooliesxChallenge\WooliesxChallenge.Api.csproj", "{7C3F141A-6A72-4273-ACD0-E5715600B2DC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WooliesxChallenge.Api", "WooliesxChallenge\WooliesxChallenge.Api.csproj", "{7C3F141A-6A72-4273-ACD0-E5715600B2DC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WooliesxChallenge.Domain", "WooliesxChallenge.Domain\WooliesxChallenge.Domain.csproj", "{1267DC95-90F1-4485-9A48-523884A6991D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WooliesxChallenge.Domain", "WooliesxChallenge.Domain\WooliesxChallenge.Domain.csproj", "{1267DC95-90F1-4485-9A48-523884A6991D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WooliesxChallenge.Application", "WooliesxChallenge.Application\WooliesxChallenge.Application.csproj", "{559FB2EE-F05B-4E3B-9037-9A26D1BD2144}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WooliesxChallenge.Application", "WooliesxChallenge.Application\WooliesxChallenge.Application.csproj", "{559FB2EE-F05B-4E3B-9037-9A26D1BD2144}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WooliesxChallenge.Proxy", "WooliesxChallenge.Proxy\WooliesxChallenge.Proxy.csproj", "{DB379897-ADAA-4B81-B3B8-B055EC80FD30}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WooliesxChallenge.Proxy", "WooliesxChallenge.Proxy\WooliesxChallenge.Proxy.csproj", "{DB379897-ADAA-4B81-B3B8-B055EC80FD30}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WooliexChallenge.UnitTests", "WooliexChallenge.UnitTests\WooliexChallenge.UnitTests.csproj", "{A741293F-6846-45D9-AB85-BD3DBF7E9A4D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{DB379897-ADAA-4B81-B3B8-B055EC80FD30}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DB379897-ADAA-4B81-B3B8-B055EC80FD30}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DB379897-ADAA-4B81-B3B8-B055EC80FD30}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A741293F-6846-45D9-AB85-BD3DBF7E9A4D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A741293F-6846-45D9-AB85-BD3DBF7E9A4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A741293F-6846-45D9-AB85-BD3DBF7E9A4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A741293F-6846-45D9-AB85-BD3DBF7E9A4D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

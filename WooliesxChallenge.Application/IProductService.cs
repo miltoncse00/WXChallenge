@@ -8,7 +8,7 @@ namespace WooliesxChallenge.Application
 {
     public interface IProductService
     {
-        public Task<IList<Product>> GetProduct(SortOption parsedSortOption);
+        public Task<IList<Product>> GetProductAsync(SortOption parsedSortOption);
 
     }
 }
